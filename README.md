@@ -1,6 +1,6 @@
 # Astro Starter
 
-> Start a new project: `npx degit stephenchenorg/astro-starter my-project`
+> Start a new project: `npx degit stephenchenorg/stater.astro --mode=git my-project`
 
 ## Installation
 
