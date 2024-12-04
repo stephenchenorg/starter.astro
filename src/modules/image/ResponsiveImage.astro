@@ -1,0 +1,23 @@
+---
+interface Props extends astroHTML.JSX.ImgHTMLAttributes {
+  desktop: string | null
+  desktopBlur?: string | null
+  mobile?: string | null
+  mobileBlur?: string | null
+}
+
+const { desktop, desktopBlur, mobile, mobileBlur, src: _, ...attributes } = Astro.props
+
+const breakpoint = 768
+---
+
+{desktop && (
+  mobile ? (
+    <picture>
+      {mobile && <source media={`(max-width: ${breakpoint - 0.02}px)`} srcset={mobile} />}
+      <img src={desktop} {...attributes} />
+    </picture>
+  ) : (
+    <img src={desktop} {...attributes} />
+  )
+)}

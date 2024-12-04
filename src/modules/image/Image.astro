@@ -1,0 +1,10 @@
+---
+interface Props extends astroHTML.JSX.ImgHTMLAttributes {
+  src: string | null
+  srcBlur?: string | null
+}
+
+const { src, ...attributes } = Astro.props
+---
+
+{src && <img src={src} {...attributes} />}
