@@ -1,7 +1,37 @@
 ---
 import Layout from '@/layouts/Layout.astro'
+
+const companySetting = {
+  lang: 'zh_TW',
+  name: 'Astro',
+  description: '',
+  logo: '',
+  address_1: '',
+  address_2: '',
+  email_1: '',
+  email_2: '',
+  fb_link: '',
+  ig_link: '',
+  line_link: '',
+  phone_1: '',
+  phone_2: '',
+  twitter_link: '',
+  threads_link: '',
+}
+
+const metadata = {
+  title: 'Astro',
+  seo_body: null,
+  seo_description: null,
+  seo_head: null,
+  seo_json_ld: null,
+  seo_keyword: null,
+  seo_title: 'Astro',
+  og_title: 'Astro',
+  og_description: null,
+}
 ---
 
-<Layout title="Astro">
+<Layout metadata={metadata} companySetting={companySetting}>
   <h1>Astro</h1>
 </Layout>
