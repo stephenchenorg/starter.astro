@@ -29,7 +29,7 @@ export function mergeUrlParams<
       if (Array.isArray(baseParams[key])) {
         result[key] = Array.from(new Set([...baseParams[key], ...(userParams[key] || [])]))
       } else {
-        result[key] = userParams[key] ?? baseParams[key]
+        result[key] = typeof userParams[key] !== 'undefined' ? userParams[key] : baseParams[key]
       }
       return result
     }, {} as Record<string, any>) as Params
