@@ -37,9 +37,9 @@ const {
     <meta property="og:site_name" content={companySetting.name} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content={metadata.og_image || companySetting.logo} />
-    {metadata.seo_json_ld && <script is:inline type="application/ld+json" set:text={metadata.seo_json_ld}></script>}
+    {metadata.seo_json_ld && <script is:inline type="application/ld+json" set:html={metadata.seo_json_ld}></script>}
 
-    <slot name="head"></slot>
+    <slot name="head" />
   </head>
   <body>
     <slot />
