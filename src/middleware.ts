@@ -1,7 +1,7 @@
 import { defineMiddleware } from 'astro/middleware'
 import { GraphQLRequestError } from 'awesome-graphql-client'
 
-export const onRequest = defineMiddleware(async (context, next) => {
+export const onRequest = defineMiddleware(async (_context, next) => {
   try {
     return await next()
   } catch (e) {
