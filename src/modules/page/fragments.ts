@@ -8,13 +8,14 @@ export const pageFields = gql`
   fragment PageFields on Page {
     title
     seo_title
+    seo_description
     seo_keyword
     seo_json_ld
     seo_head
-    seo_description
     seo_body
     og_title
     og_description
+    og_image
     fields {
       key
       content

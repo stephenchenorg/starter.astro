@@ -27,7 +27,7 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>{metadata.title} - {companySetting.name}</title>
+    <title>{metadata.seo_title || metadata.title} - {companySetting.name}</title>
 
     {metadata.seo_description && <meta name="description" content={metadata.seo_description} />}
     {metadata.seo_keyword && <meta name="keywords" content={metadata.seo_keyword} />}
@@ -40,8 +40,12 @@ const {
     {metadata.seo_json_ld && <script is:inline type="application/ld+json" set:html={metadata.seo_json_ld}></script>}
 
     <slot name="head" />
+
+    {metadata.seo_head && <Fragment set:html={metadata.seo_head} />}
   </head>
   <body>
     <slot />
+
+    {metadata.seo_body && <Fragment set:html={metadata.seo_body} />}
   </body>
 </html>
