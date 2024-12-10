@@ -2,11 +2,11 @@ export interface DataPage {
   page: Page
 }
 
-export interface Page extends PageMetadata {
+export interface Page extends PageMeta {
   fields: PageField[]
 }
 
-export interface PageMetadata {
+export interface PageMeta {
   title: string
   seo_title: string | null
   seo_description: string | null

@@ -1,4 +1,4 @@
-import type { PageField, PagePlainTextField, PagePlainTextareaField, PageContentField, PageImageField } from './types'
+import type { PageField, PagePlainTextField, PagePlainTextareaField, PageContentField, PageImageField } from '../types'
 
 export function isPlainTextField(field: PageField): field is PagePlainTextField {
   return field.type === 'text'

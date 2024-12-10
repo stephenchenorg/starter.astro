@@ -1,5 +1,5 @@
-import Image from './Image.astro'
-import ResponsiveImage from './ResponsiveImage.astro'
+import Image from './components/Image.astro'
+import ResponsiveImage from './components/ResponsiveImage.astro'
 
 export * from './fragments'
 export * from './types'

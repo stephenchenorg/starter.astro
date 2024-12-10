@@ -1,18 +1,18 @@
 ---
 import type { CompanySetting } from '@/api'
-import type { PageMetadata } from '@/modules/page'
+import type { PageMeta } from '@/modules/page'
 
 interface Props {
   // metadata
-  metadata: PageMetadata
+  meta: PageMeta
   companySetting: CompanySetting
 
-  // layout features
+  // layout props
   // ...
 }
 
 const {
-  metadata,
+  meta,
   companySetting,
 } = Astro.props
 
@@ -27,25 +27,25 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>{metadata.seo_title || metadata.title} - {companySetting.name}</title>
+    <title>{meta.seo_title || meta.title} - {companySetting.name}</title>
 
-    {metadata.seo_description && <meta name="description" content={metadata.seo_description} />}
-    {metadata.seo_keyword && <meta name="keywords" content={metadata.seo_keyword} />}
-    {metadata.og_title && <meta property="og:title" content={`${metadata.og_title} - ${companySetting.name}`} />}
-    {metadata.og_description && <meta property="og:description" content={metadata.og_description} />}
+    {meta.seo_description && <meta name="description" content={meta.seo_description} />}
+    {meta.seo_keyword && <meta name="keywords" content={meta.seo_keyword} />}
+    {meta.og_title && <meta property="og:title" content={`${meta.og_title} - ${companySetting.name}`} />}
+    {meta.og_description && <meta property="og:description" content={meta.og_description} />}
     <!-- <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} /> -->
     <meta property="og:site_name" content={companySetting.name} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={metadata.og_image || companySetting.logo} />
-    {metadata.seo_json_ld && <script is:inline type="application/ld+json" set:html={metadata.seo_json_ld}></script>}
+    <meta property="og:image" content={meta.og_image || companySetting.logo} />
+    {meta.seo_json_ld && <script is:inline type="application/ld+json" set:html={meta.seo_json_ld}></script>}
 
     <slot name="head" />
 
-    {metadata.seo_head && <Fragment set:html={metadata.seo_head} />}
+    {meta.seo_head && <Fragment set:html={meta.seo_head} />}
   </head>
   <body>
     <slot />
 
-    {metadata.seo_body && <Fragment set:html={metadata.seo_body} />}
+    {meta.seo_body && <Fragment set:html={meta.seo_body} />}
   </body>
 </html>
