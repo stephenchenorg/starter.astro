@@ -1,0 +1,28 @@
+---
+interface Props {
+  filters: Record<string, any>
+  defaultFilters: Record<string, any>
+}
+
+const { filters, defaultFilters } = Astro.props
+---
+
+<script is:inline define:vars={{
+  filters,
+  defaultFilters,
+}}>
+window.__astro__provide_filters_props = { filters, defaultFilters };
+</script>
+
+<script>
+import { filtersStore, defaultFiltersStore } from '../stores'
+
+// @ts-ignore
+const props = window.__astro__provide_filters_props
+
+const filters: Record<string, any> = props?.filters || {}
+const defaultFilters: Record<string, any> = props?.defaultFilters || {}
+
+filtersStore.set(filters)
+defaultFiltersStore.set(defaultFilters)
+</script>
