@@ -1,10 +1,10 @@
 ---
 interface Props {
   params: Record<string, any>
-  defaultParams: Record<string, any>
+  defaultParams?: Record<string, any>
 }
 
-const { params, defaultParams } = Astro.props
+const { params, defaultParams = {} } = Astro.props
 ---
 
 <script is:inline define:vars={{
