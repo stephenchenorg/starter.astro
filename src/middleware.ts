@@ -1,12 +1,12 @@
 import { defineMiddleware } from 'astro/middleware'
-import { GraphQLRequestError } from 'awesome-graphql-client'
+import { GraphQLRequestError } from './api'
 
 export const onRequest = defineMiddleware(async (_context, next) => {
   try {
     return await next()
   } catch (e) {
     // Handle 404 errors
-    if (e instanceof GraphQLRequestError && e.message.includes('Http Status 404')) {
+    if (e instanceof GraphQLRequestError && e.isNotFound()) {
       return new Response(null, {
         status: 404,
         statusText: 'Not found',
