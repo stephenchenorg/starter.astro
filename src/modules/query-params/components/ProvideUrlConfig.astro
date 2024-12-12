@@ -1,0 +1,30 @@
+---
+import type { UrlConfig } from '../types'
+
+interface Props {
+  config: UrlConfig
+}
+
+const config: UrlConfig = {
+  baseUrl: Astro.props.config.baseUrl,
+  params: Astro.props.config.params,
+  defaultParams: Astro.props.config.defaultParams,
+}
+---
+
+<script is:inline define:vars={{ config }}>
+window.__astro_provide_url_config__ = config;
+</script>
+
+<script>
+import { urlConfigStore } from '../store'
+
+// @ts-ignore
+const props = window.__astro_provide_url_config__
+
+const baseUrl: string = props?.baseUrl || location.pathname
+const params: Record<string, any> = props?.params || {}
+const defaultParams: Record<string, any> = props?.defaultParams || {}
+
+urlConfigStore.set({ baseUrl, params, defaultParams })
+</script>

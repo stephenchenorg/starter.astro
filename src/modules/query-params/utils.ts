@@ -1,9 +1,9 @@
-export function urlWithParams(url: string, params: Record<string, any>, baseParams?: Record<string, any>) {
-  const paramsString = urlParams(params, baseParams)
-  return `${url}${paramsString ? '?' : ''}${paramsString}`
+export function createUrlWithParams(url: string, params: Record<string, any>, baseParams?: Record<string, any>) {
+  const queryString = createQueryString(params, baseParams)
+  return `${url}${queryString ? '?' : ''}${queryString}`
 }
 
-export function urlParams(params: Record<string, any>, baseParams?: Record<string, any>) {
+export function createQueryString(params: Record<string, any>, baseParams?: Record<string, any>) {
   let resultParams = baseParams
     ? mergeUrlParams(baseParams, params)
     : params
@@ -33,4 +33,19 @@ export function mergeUrlParams<
       }
       return result
     }, {} as Record<string, any>) as Params
+}
+
+export function cleanParams(params: Record<string, any>, defaultParams: Record<string, any>) {
+  const newParams: Record<string, any> = JSON.parse(JSON.stringify(params))
+
+  Object.keys(newParams).forEach(key => {
+    if (
+      Object.keys(defaultParams).includes(key) &&
+      newParams[key] === defaultParams[key]
+    ) {
+      newParams[key] = null
+    }
+  })
+
+  return newParams
 }
