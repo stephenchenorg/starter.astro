@@ -1,5 +1,6 @@
+import qs from 'query-string'
 import { urlConfigStore } from './store'
-import { cleanParams, mergeUrlParams, createUrlWithParams } from './utils'
+import { cleanParams, mergeUrlParams } from './utils'
 import type { UrlConfig } from './types'
 
 export interface QueryParamsUrlOptions {
@@ -27,5 +28,15 @@ export function queryParamsUrl(
   }
   const cleanedParams = cleanParams(params, config.defaultParams || {})
 
-  return createUrlWithParams(config.baseUrl, cleanedParams)
+  const queryString = qs.stringify(cleanedParams, {
+    skipEmptyString: true,
+    skipNull: true,
+    sort: false,
+  })
+
+  return `${config.baseUrl}${queryString ? '?' : ''}${queryString}`
+}
+
+export function parseQueryParams(search: string) {
+  return qs.parse(search)
 }
