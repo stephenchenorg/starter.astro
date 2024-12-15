@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/netlify": "^5.5.3",
-    "astro": "^4.16.2",
+    "@astrojs/netlify": "6.0.0",
+    "astro": "5.0.5",
     "awesome-graphql-client": "^2.1.0",
     "dayjs": "^1.11.13",
     "graphql": "^16.9.0",
