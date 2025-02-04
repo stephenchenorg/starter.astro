@@ -16,7 +16,7 @@ const {
   companySetting,
 } = Astro.props
 
-// const pathname = new URL(Astro.request.url).pathname
+// const pathname = Astro.url.pathname
 ---
 
 <!doctype html>
@@ -29,11 +29,12 @@ const {
 
     <title>{meta.seo_title || meta.title} - {companySetting.name}</title>
 
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     {meta.seo_description && <meta name="description" content={meta.seo_description} />}
     {meta.seo_keyword && <meta name="keywords" content={meta.seo_keyword} />}
     {meta.og_title && <meta property="og:title" content={`${meta.og_title} - ${companySetting.name}`} />}
     {meta.og_description && <meta property="og:description" content={meta.og_description} />}
-    <!-- <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} /> -->
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
     <meta property="og:site_name" content={companySetting.name} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content={meta.og_image || companySetting.logo} />
