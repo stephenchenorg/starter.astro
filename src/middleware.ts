@@ -1,5 +1,5 @@
 import { defineMiddleware } from 'astro/middleware'
-import { GraphQLRequestError } from './api'
+import { GraphQLRequestError } from '@stephenchenorg/astro/api'
 
 export const onRequest = defineMiddleware(async (_context, next) => {
   try {

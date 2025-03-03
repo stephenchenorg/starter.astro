@@ -1,7 +1,7 @@
 import { AwesomeGraphQLClient, GraphQLRequestError as AwesomeGraphQLRequestError } from 'awesome-graphql-client'
+import { GraphQLRequestError } from '@stephenchenorg/astro/api'
 import type { TypedDocumentNode } from '@graphql-typed-document-node/core'
 import { print } from 'graphql/language/printer'
-import { GraphQLRequestError } from './error'
 
 export { gql } from 'graphql-tag'
 
