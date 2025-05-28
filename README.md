@@ -8,3 +8,9 @@
 yarn
 yarn dev
 ```
+
+Copy `.env.example` to `.env` and set your environment variables:
+
+```bash
+cp .env.example .env
+```
