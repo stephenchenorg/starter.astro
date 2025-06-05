@@ -13,11 +13,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "dayjs": "^1.11.13"
+  },
+  "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/netlify": "^6.3.4",
     "@stephenchenorg/astro": "^2.0.0",
     "astro": "^5.8.0",
-    "dayjs": "^1.11.13",
     "typescript": "~5.8.3"
   }
 }
