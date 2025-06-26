@@ -19,6 +19,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/netlify": "^6.3.4",
     "@stephenchenorg/astro": "^2.0.0",
+    "@ycs77/eslint-config": "4.4.0",
     "astro": "^5.8.0",
     "typescript": "^5.8.3"
   }
