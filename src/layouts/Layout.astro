@@ -1,63 +1,28 @@
 ---
 import type { PageMeta } from '@stephenchenorg/astro/page'
-import { createCompanySetting } from '@stephenchenorg/astro/company-setting'
-import siteConfig from '@/site.config'
-import '@/styles/index.css'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import Footer from '@/layouts/partials/Footer.astro'
+import Header from '@/layouts/partials/Header.astro'
 
 interface Props {
   // metadata
   meta: PageMeta
 
   // layout props
-  bodyClass?: string
+  // ...
 }
 
 const {
   meta,
-  bodyClass,
 } = Astro.props
-
-const companySetting = createCompanySetting({
-  name: siteConfig.name,
-  description: siteConfig.description,
-  logo: 'https//example.com/logo.png',
-})
-
-// const pathname = Astro.url.pathname
 ---
 
-<!doctype html>
-<html lang="zh-Hant-TW">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+<BaseLayout meta={meta}>
+  <slot name="head" slot="head" />
 
-    <title>{meta.seo_title || meta.title} - {siteConfig.slogan}</title>
+  <Header />
 
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-    {meta.seo_description && <meta name="description" content={meta.seo_description} />}
-    {meta.seo_keyword && <meta name="keywords" content={meta.seo_keyword} />}
-    {meta.og_title && <meta property="og:title" content={`${meta.og_title} - ${companySetting.name}`} />}
-    {meta.og_description && <meta property="og:description" content={meta.og_description} />}
-    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
-    <meta property="og:site_name" content={companySetting.name} />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content={meta.og_image || companySetting.logo} />
-    {meta.seo_json_ld && <script is:inline type="application/ld+json" set:html={meta.seo_json_ld}></script>}
+  <slot />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Noto+Sans+TC:wght@300..800&family=Noto+Serif+TC:wght@300..800&display=swap" />
-
-    <slot name="head" />
-
-    {meta.seo_head && <Fragment set:html={meta.seo_head} />}
-  </head>
-  <body class:list={['antialiased', bodyClass]}>
-    <slot />
-
-    {meta.seo_body && <Fragment set:html={meta.seo_body} />}
-  </body>
-</html>
+  <Footer />
+</BaseLayout>
