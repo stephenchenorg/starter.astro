@@ -10,7 +10,7 @@ export default ycs77({
     files: [GLOB_ASTRO, GLOB_SRC],
     languageOptions: {
       globals: {
-        FlowbiteInstances: false,
+
       },
     },
     rules: {
