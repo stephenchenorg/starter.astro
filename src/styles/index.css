@@ -3,51 +3,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  /* 斷點設定 */
-  --breakpoint-2xl: initial;
-
-  /* 預設調色板 */
-  --color-*: initial;
-  --color-gray-50: oklch(0.985 0.002 247.839);
-  --color-gray-100: oklch(0.967 0.003 264.542);
-  --color-gray-200: oklch(0.928 0.006 264.531);
-  --color-gray-300: oklch(0.872 0.01 258.338);
-  --color-gray-400: oklch(0.707 0.022 261.325);
-  --color-gray-500: oklch(0.551 0.027 264.364);
-  --color-gray-600: oklch(0.446 0.03 256.802);
-  --color-gray-700: oklch(0.373 0.034 259.733);
-  --color-gray-800: oklch(0.278 0.033 256.848);
-  --color-gray-900: oklch(0.21 0.034 264.665);
-  --color-gray-950: oklch(0.13 0.028 261.692);
-  --color-black: #000;
-  --color-white: #fff;
-
-  /* 自訂調色板 */
-  --color-primary-100: oklch(0.9516 0.011 243.65); /* #E9F0F6 */
-  --color-primary-300: oklch(0.9083 0.0203 238.68); /* #D5E3ED */
-  --color-primary-500: oklch(0.669 0.1049 240.38); /* #539DCF */
-  --color-primary-700: oklch(0.5687 0.1201 251.36); /* #3B7ABB */
-  --color-primary-900: oklch(0.451 0.0829 243.74); /* #275A80 */
-  --color-secondary-100: oklch(0.981 0.0053 106.5); /* #F9F9F5 */
-  --color-secondary-300: oklch(0.9591 0.0211 109.69); /* #F2F3E3 */
-  --color-secondary-500: oklch(0.8192 0.1607 102.64); /* #D8C72D */
-  --color-secondary-700: oklch(0.6346 0.1242 101.11); /* #9B8C1C */
-  --color-secondary-900: oklch(0.3865 0.075 105.33); /* #4A460C */
-  --color-success-100: oklch(0.9549 0.0299 167.46); /* #DEF7EC */
-  --color-success-500: oklch(0.6601 0.1558 154.43); /* #21AD65 */
-  --color-warning-100: oklch(0.9213 0.0687 77.49); /* #FFE0B2 */
-  --color-warning-500: oklch(0.722 0.1401 58.65); /* #E58D40 */
-  --color-error-50: oklch(0.9697 0.0119 17.36); /* #FDF2F2 */
-  --color-error-100: oklch(0.8686 0.0315 17.77); /* #E8CCCC */
-  --color-error-500: oklch(0.4626 0.1492 25.18); /* #9B2A2A */
-
-  /* 字體設定 */
-  --font-sans: 'Inter', 'Noto Sans TC', 'ui-sans-serif', 'system-ui', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-serif: 'Noto Serif TC', 'ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif';
-  --font-mono: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
-}
-
 @utility container {
   margin-inline: auto;
   padding-inline: 1.5rem;
