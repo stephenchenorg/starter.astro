@@ -1,35 +1,34 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-// import { gql, graphQLAPI } from '@/api'
+import { gql, graphQLAPI } from '@/api'
 import { seoMeta } from '@stephenchenorg/astro/page'
 import { createCompanySetting } from '@stephenchenorg/astro/company-setting'
-// import { companySettingFields } from '@stephenchenorg/astro/company-setting'
-// import type { DataCompanySetting } from '@stephenchenorg/astro/company-setting'
+import { companySettingFields } from '@stephenchenorg/astro/company-setting'
+import type { DataCompanySetting } from '@stephenchenorg/astro/company-setting'
 
-// interface Data extends DataCompanySetting {
-//   //
-// }
+interface Data extends DataCompanySetting {
+  //
+}
 
-// const data = await graphQLAPI<Data>(gql`
-//   query {
-//     companySetting {
-//       ...CompanySettingFields
-//     }
-//   }
-//   ${companySettingFields}
-// `)
-
-const companySetting = createCompanySetting({
-  name: 'Astro',
-  description: 'Astro is a modern web development platform.',
-  logo: 'https//example.com/logo.png',
-})
+const data = await graphQLAPI<Data>(gql`
+  query {
+    companySetting {
+      ...CompanySettingFields
+    }
+  }
+  ${companySettingFields}
+`)
 
 const meta = seoMeta({
   title: 'Astro',
 })
 ---
 
-<Layout meta={meta} companySetting={companySetting}>
-  <h1>Astro</h1>
+<Layout meta={meta}>
+  <h1>從 graphQL API 獲取資料</h1>
+  <div class="flex items-center justify-center min-h-screen bg-amber-100">
+    <div>
+      <span>名稱 {data.companySetting.name}</span>
+    </div>
+  </div>
 </Layout>
