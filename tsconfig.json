@@ -1,22 +1,11 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    // Astro has its own special JSX handling because it supports multiple frameworks:
-    // If TypeScript transformed the JSX first,
-    // Astro would lose this information and couldn't handle multi-framework components properly.
-    // So we set "jsx" to "preserve" to keep the JSX syntax intact.
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
-    // Set allowImportingTsExtensions This will cause a TypeScript ERROR
-    //    import { helper } from './utils.ts';          // ❌ Error!
-    //    import Component from './Button.tsx';         // ❌ Error!
-    //
-    //    import { helper } from './utils';             // ✅ Works
-    //    import Component from './Button';             // ✅ Works
-    // This keeps your imports clean and follows standard JavaScript module conventions
     "allowImportingTsExtensions": false
   },
   "exclude": ["public", "dist"]
