@@ -8,11 +8,6 @@ export default ycs77({
 })
   .append({
     files: [GLOB_ASTRO, GLOB_SRC, GLOB_VUE],
-    languageOptions: {
-      globals: {
-
-      },
-    },
     rules: {
       'no-alert': 'off',
       'no-new': 'off',
@@ -20,8 +15,6 @@ export default ycs77({
       'no-use-before-define': 'off',
 
       'unused-imports/no-unused-vars': 'off',
-
-      'style/jsx-closing-tag-location': 'off',
     },
   })
   .append(...astroExplicitWrapper.config)
