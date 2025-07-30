@@ -1,20 +1,26 @@
-# Astro Starter
+# Astro 前端
 
 > Start a new project: `npx degit stephenchenorg/stater.astro --mode=git my-project`
-
-# Dentalk 前端
 
 - 正式網址:
 - 測試網址:
 
-## Installation
+## 安裝
+
+專案依賴 Node.js 22.x 版本和 Yarn 1.22.22 版本，使用以下指令安裝 Yarn：
+
+```bash
+npm install -g yarn
+```
+
+安裝依賴：
 
 ```bash
 yarn
 yarn dev
 ```
 
-Copy `.env.example` to `.env` and set your environment variables:
+複製 `.env.example` 為 `.env` 並設定環境變數：
 
 ```bash
 cp .env.example .env
@@ -52,3 +58,16 @@ yarn lint
 yarn lint --fix
 ```
 
+## 部署
+
+Staging 環境編譯指令：
+
+```bash
+yarn build --mode staging
+```
+
+Production 環境編譯指令：
+
+```bash
+yarn build --mode production
+```

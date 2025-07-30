@@ -1,5 +1,5 @@
-import { defineMiddleware } from 'astro/middleware'
 import { handleErrorResponse } from '@stephenchenorg/astro/api'
+import { defineMiddleware } from 'astro/middleware'
 
 export const onRequest = defineMiddleware(async (_context, next) => {
   try {

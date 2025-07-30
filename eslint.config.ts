@@ -1,4 +1,4 @@
-import ycs77, { GLOB_ASTRO, GLOB_SRC } from '@ycs77/eslint-config'
+import ycs77, { GLOB_ASTRO, GLOB_SRC, GLOB_VUE } from '@ycs77/eslint-config'
 import astroExplicitWrapper from 'eslint-plugin-astro-explicit-wrapper'
 
 export default ycs77({
@@ -7,12 +7,7 @@ export default ycs77({
   vue: true,
 })
   .append({
-    files: [GLOB_ASTRO, GLOB_SRC],
-    languageOptions: {
-      globals: {
-
-      },
-    },
+    files: [GLOB_ASTRO, GLOB_SRC, GLOB_VUE],
     rules: {
       'no-alert': 'off',
       'no-new': 'off',
@@ -20,8 +15,6 @@ export default ycs77({
       'no-use-before-define': 'off',
 
       'unused-imports/no-unused-vars': 'off',
-
-      'style/jsx-closing-tag-location': 'off',
     },
   })
   .append(...astroExplicitWrapper.config)
