@@ -4,5 +4,5 @@ echo "這腳本是為了快速 push, 加速開發使用而已"
 cd "../" || exit
 
 git add -A
-git commit -m "Update"
-git push origin main
+git commit -m "Fast update using script"
+git push origin dev
