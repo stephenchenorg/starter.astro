@@ -1,22 +1,6 @@
 ---
-import type { DataCompanySetting } from '@stephenchenorg/astro/company-setting'
-import { companySettingFields } from '@stephenchenorg/astro/company-setting'
 import { seoMeta } from '@stephenchenorg/astro/page'
-import { gql, graphQLAPI } from '@/api'
 import Layout from '@/layouts/Layout.astro'
-
-interface Data extends DataCompanySetting {
-  //
-}
-
-const data = await graphQLAPI<Data>(gql`
-  query {
-    companySetting {
-      ...CompanySettingFields
-    }
-  }
-  ${companySettingFields}
-`)
 
 const meta = seoMeta({
   title: 'Astro',
@@ -24,10 +8,9 @@ const meta = seoMeta({
 ---
 
 <Layout meta={meta}>
-  <h1>從 graphQL API 獲取資料</h1>
-  <div class="flex items-center justify-center min-h-screen bg-primary-500">
-    <div>
-      <span>名稱 {data.companySetting.name}</span>
-    </div>
+  <div class="container py-8 min-h-[calc(100vh-10.5rem)] flex flex-col items-center justify-center">
+    <h1 class="text-4xl text-primary-500 text-center font-bold">
+      Astro Starter
+    </h1>
   </div>
 </Layout>

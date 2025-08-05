@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { usePagination } from '@stephenchenorg/astro/pagination-vue'
+import { usePagination } from '@stephenchenorg/astro/pagination-vue-server-side'
 
 const props = withDefaults(defineProps<{
   total: number
@@ -29,7 +29,6 @@ const props = withDefaults(defineProps<{
 const {
   items,
   showPagination,
-  currentPage,
   canFirst,
   canPrev,
   canNext,

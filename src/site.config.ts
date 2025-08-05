@@ -1,7 +1,6 @@
 export default {
   name: '新的 Astro 網站',
-  slogan: '新的 Astro Slogan',
-  description: '新的 Astro 描敘',
+  description: '新的 Astro 描述',
 
   apiBaseUrl: import.meta.env.API_BASE_URL.replace(/\/$/, ''),
 }

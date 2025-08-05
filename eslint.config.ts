@@ -6,15 +6,14 @@ export default ycs77({
   typescript: true,
   vue: true,
 })
+  .append(...astroExplicitWrapper.config)
   .append({
     files: [GLOB_ASTRO, GLOB_SRC, GLOB_VUE],
     rules: {
       'no-alert': 'off',
-      'no-new': 'off',
       'no-unused-vars': 'off',
       'no-use-before-define': 'off',
 
       'unused-imports/no-unused-vars': 'off',
     },
   })
-  .append(...astroExplicitWrapper.config)

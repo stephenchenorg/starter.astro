@@ -34,7 +34,7 @@ const companySetting = createCompanySetting({
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>{meta.seo_title || meta.title} - {siteConfig.slogan}</title>
+    <title>{meta.seo_title || meta.title} - {siteConfig.name}</title>
 
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     {meta.seo_description && <meta name="description" content={meta.seo_description} />}
