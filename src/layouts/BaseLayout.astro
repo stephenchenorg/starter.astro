@@ -36,7 +36,13 @@ const ga4TrackingId = siteConfig.ga4TrackingId
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>{meta.seo_title || meta.title} - {siteConfig.name}</title>
+    <title>{siteConfig.name}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Noto+Sans+TC:wght@300..800&family=Noto+Serif+TC:wght@300..800&display=swap" />
+
+    <slot name="head" />
 
     {!import.meta.env.DEV && (
       <>
@@ -52,12 +58,6 @@ const ga4TrackingId = siteConfig.ga4TrackingId
         {meta.seo_json_ld && <script is:inline type="application/ld+json" set:html={meta.seo_json_ld}></script>}
       </>
     )}
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Noto+Sans+TC:wght@300..800&family=Noto+Serif+TC:wght@300..800&display=swap" />
-
-    <slot name="head" />
 
     <!--
       This section is for Google Analytics 4 (GA4) tracking code.

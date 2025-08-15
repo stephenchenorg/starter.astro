@@ -1,10 +1,12 @@
 import type { FormErrors } from '@stephenchenorg/astro/form-validator'
 import type { AstroCookies, AstroCookieSetOptions } from 'astro'
+import type { SessionUser, UserToken } from '@/types'
 import { createCookieSessionStorage } from 'astro-cookie-session'
 
 // Session 資料類型
 interface SessionData {
-  //
+  user: SessionUser
+  userToken: UserToken
 }
 
 // Flash 資料類型
