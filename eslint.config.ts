@@ -17,3 +17,9 @@ export default ycs77({
       'unused-imports/no-unused-vars': 'off',
     },
   })
+  .append({
+    files: [GLOB_ASTRO],
+    rules: {
+      'style/indent': 'off',
+    },
+  })

@@ -68,11 +68,13 @@ const ga4TrackingId = siteConfig.ga4TrackingId
       <>
         <script is:inline src={`https://www.googletagmanager.com/gtag/js?id=${ga4TrackingId}`}></script>
         <script is:inline define:vars={{ ga4TrackingId }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', ga4TrackingId);
-        </script>
+          window.dataLayer = window.dataLayer || []
+function gtag(...args) {
+            dataLayer.push(...args)
+          }
+          gtag('js', new Date())
+gtag('config', ga4TrackingId)
+</script>
       </>
     )}
 
