@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly API_BASE_URL: string
+  readonly GA4_TRACKING_ID: string
 }
 
 interface ImportMeta {
