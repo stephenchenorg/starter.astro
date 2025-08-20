@@ -2,6 +2,8 @@
 
 參考設計文件(每個專案不同)：[README_DESIGN.md](README_DESIGN.md)
 
+# [前端 SOP](https://github.com/stephenchenorg/.github-private/blob/main/SOP_Astro.md)
+
 # Astro 前端
 
 > Start a new project: `npx degit stephenchenorg/stater.astro --mode=git my-project`
