@@ -1,8 +1,6 @@
 # 設計參考
 
-參考設計文件：[README_DESIGN.md](README_DESIGN.md)
-
-
+參考設計文件(每個專案不同)：[README_DESIGN.md](README_DESIGN.md)
 
 # Astro 前端
 
