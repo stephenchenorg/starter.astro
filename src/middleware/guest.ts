@@ -8,7 +8,7 @@ const GUEST_URLS = [
   '/register',
 ]
 
-export const guest = defineMiddleware(async ({ url, redirect, cookies }, next) => {
+export const guest = defineMiddleware(async ({ url, redirect }, next) => {
   // const session = getSession(cookies)
   const isLoggedIn = false
   // const isLoggedIn = !!session.userToken?.token

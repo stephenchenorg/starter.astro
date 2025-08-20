@@ -2,6 +2,7 @@
 import type { PageMeta } from '@stephenchenorg/astro/page'
 import { createCompanySetting } from '@stephenchenorg/astro/company-setting'
 import siteConfig from '@/site.config'
+import GAScript from './partials/GAScript.astro'
 import '@/styles/index.css'
 
 interface Props {
@@ -59,24 +60,7 @@ const ga4TrackingId = siteConfig.ga4TrackingId
       </>
     )}
 
-    <!--
-      This section is for Google Analytics 4 (GA4) tracking code.
-      And important part is using `is:inline` attribute on the script tag.
-      Tell Astro ignores all the optimizations it does to scripts and just includes them as they are.
-    -->
-    {import.meta.env.DEV && ga4TrackingId && (
-      <>
-        <script is:inline src={`https://www.googletagmanager.com/gtag/js?id=${ga4TrackingId}`}></script>
-        <script is:inline define:vars={{ ga4TrackingId }}>
-          window.dataLayer = window.dataLayer || []
-function gtag(...args) {
-            dataLayer.push(...args)
-          }
-          gtag('js', new Date())
-gtag('config', ga4TrackingId)
-</script>
-      </>
-    )}
+    {import.meta.env.DEV && ga4TrackingId && <GAScript ga4TrackingId={ga4TrackingId} />}
 
     {!import.meta.env.DEV && meta.seo_head && <Fragment set:html={meta.seo_head} />}
   </head>
