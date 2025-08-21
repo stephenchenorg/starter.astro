@@ -68,5 +68,8 @@ const ga4TrackingId = siteConfig.ga4TrackingId
     <slot />
 
     {!import.meta.env.DEV && meta.seo_body && <Fragment set:html={meta.seo_body} />}
+
+    <!-- Scripts -->
+    <slot name="scripts" />
   </body>
 </html>
