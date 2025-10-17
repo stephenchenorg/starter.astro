@@ -3,6 +3,10 @@ import type { PageMeta } from '@stephenchenorg/astro/page'
 import { createCompanySetting } from '@stephenchenorg/astro/company-setting'
 import siteConfig from '@/site.config'
 import GAScript from './partials/GAScript.astro'
+import GTMScript from './partials/GTMScript.astro'
+import LINETagScript from './partials/LINETagScript.astro'
+import ClarityScript from './partials/ClarityScript.astro'
+import FBPixelScript from './partials/FBPixelScript.astro'
 import '@/styles/index.css'
 
 interface Props {
@@ -27,6 +31,10 @@ const companySetting = createCompanySetting({
 // const pathname = Astro.url.pathname
 
 const ga4TrackingId = siteConfig.ga4TrackingId
+const gtmId = siteConfig.gtmId
+const lineTagId = siteConfig.lineTagId
+const clarityId = siteConfig.clarityId
+const fbPixelId = siteConfig.fbPixelId
 ---
 
 <!doctype html>
@@ -60,7 +68,15 @@ const ga4TrackingId = siteConfig.ga4TrackingId
       </>
     )}
 
-    {import.meta.env.DEV && ga4TrackingId && <GAScript ga4TrackingId={ga4TrackingId} />}
+    {!import.meta.env.DEV && (
+      <>
+        {gtmId && <GTMScript gtmId={gtmId} />}
+        {ga4TrackingId && <GAScript ga4TrackingId={ga4TrackingId} />}
+        {lineTagId && <LINETagScript lineTagId={lineTagId} />}
+        {clarityId && <ClarityScript clarityId={clarityId} />}
+        {fbPixelId && <FBPixelScript fbPixelId={fbPixelId} />}
+      </>
+    )}
 
     {!import.meta.env.DEV && meta.seo_head && <Fragment set:html={meta.seo_head} />}
   </head>
