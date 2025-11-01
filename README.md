@@ -1,19 +1,17 @@
 # 設計參考
 
-參考設計文件：[README_DESIGN.md](README_DESIGN.md)
-
-
+因為每個專案設計文件不一樣，所以額外放在：[README_DESIGN.md](README_DESIGN.md)
 
 # Astro 前端
 
-> Start a new project: `npx degit stephenchenorg/stater.astro --mode=git my-project`
+> Start a new project: `npx degit stephenchenorg/stater.astro --mode=git <my-project>`
 
 - 正式網址:
 - 測試網址:
 
-## 安裝
+## 安裝(初始化)
 
-專案依賴 Node.js 22.x 版本和 Yarn 1.22.22 版本，使用以下指令安裝 Yarn：
+專案依賴 Node.js 22.x 版本和 Yarn 1.22.22 版本，如果沒有的話使用以下指令安裝 Yarn：
 
 ```bash
 npm install -g yarn
