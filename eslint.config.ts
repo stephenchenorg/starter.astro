@@ -5,7 +5,7 @@ export default ycs77({
   typescript: true,
   vue: true,
   ignores: [
-    'src/layouts/partials/GAScript.astro',
+    'src/layouts/scripts/*.astro',
   ],
 })
   .append({
