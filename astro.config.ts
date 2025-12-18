@@ -1,7 +1,7 @@
 import netlify from '@astrojs/netlify'
+import sitemap from '@astrojs/sitemap'
 import vue from '@astrojs/vue'
 import tailwindcss from '@tailwindcss/vite'
-import sitemap from '@astrojs/sitemap'
 import { defineConfig } from 'astro/config'
 import icons from 'unplugin-icons/vite'
 
