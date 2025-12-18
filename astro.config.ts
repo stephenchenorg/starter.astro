@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap'
 import { defineConfig } from 'astro/config'
 import icons from 'unplugin-icons/vite'
 
-const site = 'https://www.dentalk.com.tw'
+const site = 'https://www.example.com'
 
 export default defineConfig({
   site,
@@ -26,10 +26,7 @@ export default defineConfig({
         page !== `${site}/422` &&
         page !== `${site}/429` &&
         !page.startsWith(`${site}/api`) &&
-        !page.startsWith(`${site}/auth`) &&
-        !page.startsWith(`${site}/user/`) &&
-        !page.startsWith(`${site}/cart`) &&
-        !page.startsWith(`${site}/checkout`),
+        !page.startsWith(`${site}/auth`),
     }),
   ],
   vite: {
