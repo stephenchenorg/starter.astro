@@ -13,7 +13,9 @@ export async function apiFetch<T = any, R extends ResponseType = 'json'>(
     baseURL: siteConfig.apiBaseUrl,
     ...options,
     async onRequest({ request, options }) {
-      options.headers.set('Content-Language', 'zh-TW')
+      // 默認使用 zh_TW, 因為後端也是用 zh_TW, 雖然前端是使用 BCP 47 國際標準，html 的 lang 是使用 zh-TW ( 不是下底線 ）
+      // 但語系因為跟著後端走，所以記得其他語系也是如此
+      options.headers.set('Content-Language', 'zh_TW')
       options.headers.set('Time-Zone', 'Asia/Taipei')
       options.headers.set('Referer', 'https://dentalk.com.tw/')
 
