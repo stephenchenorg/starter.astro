@@ -11,23 +11,24 @@
 
 ## 安裝(初始化)
 
-專案依賴 Node.js 22.x 版本和 Yarn 1.22.22 版本，如果沒有的話使用以下指令安裝 Yarn：
+『如果沒安裝 yarn 』專案依賴 Node.js 22.x 版本和 Yarn 1.22.22 版本，如果沒有的話使用以下指令安裝 Yarn：
 
 ```bash
 npm install -g yarn
-```
-
-安裝依賴：
-
-```bash
-yarn
-yarn dev
 ```
 
 複製 `.env.example` 為 `.env` 並設定環境變數：
 
 ```bash
 cp .env.example .env
+```
+
+
+安裝依賴：
+
+```bash
+yarn
+yarn dev
 ```
 
 需要設定 `SECRET_KEY_BASE` 環境變數，是 Astro Cookie Session 要使用的加密金鑰，可以使用以下指令生成：
