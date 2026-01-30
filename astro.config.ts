@@ -1,4 +1,5 @@
 import netlify from '@astrojs/netlify'
+import node from '@astrojs/node'
 import sitemap from '@astrojs/sitemap'
 import vue from '@astrojs/vue'
 import tailwindcss from '@tailwindcss/vite'
@@ -6,6 +7,7 @@ import { defineConfig } from 'astro/config'
 import icons from 'unplugin-icons/vite'
 
 const site = 'https://www.example.com'
+const isNetlify = process.env.NETLIFY === 'true'
 
 export default defineConfig({
   site,
@@ -14,9 +16,9 @@ export default defineConfig({
   build: {
     format: 'file',
   },
-  adapter: netlify({
-    devFeatures: false,
-  }),
+  adapter: isNetlify
+    ? netlify({ devFeatures: false })
+    : node({ mode: 'standalone' }),
   integrations: [
     vue(),
     sitemap({
