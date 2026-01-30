@@ -7,7 +7,7 @@ import { defineConfig } from 'astro/config'
 import icons from 'unplugin-icons/vite'
 
 const site = 'https://www.example.com'
-const isNetlify = process.env.NETLIFY === 'true'
+const isNetlify = process.env.is_netlify === 'true'
 
 export default defineConfig({
   site,
