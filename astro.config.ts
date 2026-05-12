@@ -5,11 +5,9 @@ import vue from '@astrojs/vue'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 import icons from 'unplugin-icons/vite'
-import { loadEnv } from 'vite'
 
-const env = loadEnv(process.env.NODE_ENV ?? 'development', process.cwd(), '')
-const site = env.SITE_URL || process.env.SITE_URL || 'http://localhost:4321'
-const siteUrl = new URL(site)
+const site = process.env.SITE_URL!
+const { hostname, protocol, port } = new URL(site)
 const isNetlify = process.env.is_netlify === 'true'
 
 export default defineConfig({
@@ -48,9 +46,9 @@ export default defineConfig({
     // 的 same-origin 比對失敗，prod 同源表單提交全被擋 (Cross-site form submissions are forbidden)
     allowedDomains: [
       {
-        hostname: siteUrl.hostname,
-        protocol: siteUrl.protocol.replace(':', ''),
-        ...(siteUrl.port ? { port: siteUrl.port } : {}),
+        hostname,
+        protocol: protocol.replace(':', ''),
+        ...(port ? { port } : {}),
       },
     ],
     // Change built-in origin check to custom function
