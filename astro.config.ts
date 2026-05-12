@@ -5,8 +5,11 @@ import vue from '@astrojs/vue'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 import icons from 'unplugin-icons/vite'
+import { loadEnv } from 'vite'
 
-const site = 'https://www.example.com'
+const env = loadEnv(process.env.NODE_ENV ?? 'development', process.cwd(), '')
+const site = env.SITE_URL || process.env.SITE_URL || 'http://localhost:4321'
+const siteUrl = new URL(site)
 const isNetlify = process.env.is_netlify === 'true'
 
 export default defineConfig({
@@ -40,6 +43,16 @@ export default defineConfig({
     ],
   },
   security: {
+    // Astro 5.14+ host header 驗證：未設定 allowedDomains 時，
+    // host 會被視為不可信並 fallback 到 localhost，導致 src/middleware/originCheck.ts
+    // 的 same-origin 比對失敗，prod 同源表單提交全被擋 (Cross-site form submissions are forbidden)
+    allowedDomains: [
+      {
+        hostname: siteUrl.hostname,
+        protocol: siteUrl.protocol.replace(':', ''),
+        ...(siteUrl.port ? { port: siteUrl.port } : {}),
+      },
+    ],
     // Change built-in origin check to custom function
     // @see src/middleware.ts
     checkOrigin: false,
