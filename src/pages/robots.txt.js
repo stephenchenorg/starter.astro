@@ -1,3 +1,27 @@
+/**
+ * robots.txt - 搜尋引擎爬蟲控制檔案
+ *
+ * ## 什麼是 robots.txt？
+ * 給搜尋引擎爬蟲看的「告示牌」，告訴它們哪些頁面可以爬、哪些不行。
+ * 當 Google/Bing 爬蟲要爬網站時，第一件事就是先看 /robots.txt。
+ *
+ * ## 語法說明
+ * - `User-agent: *` — 適用於所有爬蟲
+ * - `User-agent: Googlebot` — 只適用於 Google 爬蟲
+ * - `Allow: /` — 允許爬取整個網站
+ * - `Disallow: /` — 禁止爬取整個網站
+ * - `Disallow: /admin/` — 禁止爬取 /admin/ 路徑
+ * - `Sitemap: URL` — 告訴爬蟲 sitemap 位置
+ *
+ * ## 重要觀念
+ * - 這是「君子協定」，正規爬蟲（Google、Bing）會遵守，惡意爬蟲可能無視
+ * - 不是密碼保護，只是「請不要進來」的告示
+ * - 所以還需要搭配 noindex meta tag 作為多層保護
+ *
+ * ## 環境判斷
+ * - 使用 MODE 而非 DEV，確保 staging 環境也會被阻擋
+ * - DEV 只在 yarn dev 時為 true，build 後永遠是 false
+ */
 export async function GET() {
   const isProduction = import.meta.env.MODE === 'production'
   const siteUrl = import.meta.env.SITE

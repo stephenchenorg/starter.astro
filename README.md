@@ -102,6 +102,42 @@ yarn build --mode production
 | **SEO/OG tags 不輸出** | 不輸出 canonical、description、OG 標籤 |
 | **Analytics 不載入** | GA4、GTM、LINE Tag、Clarity、FB Pixel 都不載入 |
 
+### robots.txt 是什麼？
+
+給搜尋引擎爬蟲看的「告示牌」，告訴它們哪些頁面可以爬、哪些不行。當 Google/Bing 爬蟲要爬網站時，**第一件事**就是先看 `/robots.txt`。
+
+#### 語法說明
+
+```txt
+User-agent: *        # 適用於所有爬蟲
+Allow: /             # 允許爬取整個網站
+Disallow: /admin/    # 禁止爬取 /admin/ 路徑
+Sitemap: URL         # 告訴爬蟲 sitemap 位置
+```
+
+#### 範例
+
+```txt
+# 禁止所有爬蟲
+User-agent: *
+Disallow: /
+
+# 允許爬取，但排除特定路徑
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+```
+
+#### 重要觀念
+
+| 特性 | 說明 |
+|------|------|
+| **君子協定** | 爬蟲「應該」遵守，但不是強制的 |
+| **正規爬蟲會遵守** | Google、Bing、Facebook 等都會遵守 |
+| **惡意爬蟲可能無視** | 所以需要多層保護（robots.txt + noindex） |
+| **不是密碼保護** | 只是「請不要進來」的告示，不是真的鎖門 |
+
 ### 維護頁面（Coming Soon）
 
 `public/coming-soon.html` 是獨立的靜態維護頁面，可搭配 Nginx 在網站上線前使用。
