@@ -1,11 +1,11 @@
 export async function GET() {
-  const isDev = import.meta.env.DEV
+  const isProduction = import.meta.env.MODE === 'production'
   const siteUrl = import.meta.env.SITE
 
-  const robotsTxt = isDev
-    // Development environment robots.txt
+  const robotsTxt = !isProduction
+    // Non-production environment robots.txt (dev, staging, etc.)
     ? `
-# Development Environment - Block All Crawlers
+# Non-Production Environment - Block All Crawlers
 User-agent: *
 Disallow: /
 `
