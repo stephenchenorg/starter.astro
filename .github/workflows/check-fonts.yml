@@ -1,0 +1,14 @@
+name: Font License Check
+
+# 檢查專案有沒有夾帶「商業付費字型」（如從 Webflow/osmo 模板搬來的 RM Mono、
+# PP Neue Montreal，或付費 icon font）。發現即失敗，擋下 push / PR 合併。
+
+on: [push, pull_request]
+
+jobs:
+  check-fonts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 檢查商業付費字型（發現即失敗）
+        run: bash scripts/check-fonts.sh

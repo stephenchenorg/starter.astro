@@ -11,7 +11,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint \"*.{js,ts,json}\" \"src/**/*.{js,ts,astro,vue}\""
+    "lint": "eslint \"*.{js,ts,json}\" \"src/**/*.{js,ts,astro,vue}\"",
+    "prepare": "bash scripts/install-hooks.sh || true"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.2",

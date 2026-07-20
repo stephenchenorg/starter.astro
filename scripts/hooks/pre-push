@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# pre-push — 字型授權檢查（為輔：只警告、不擋 push；CI 才會擋下）
+#
+# 每次 git push 前自動跑 scripts/check-fonts.sh。發現疑似付費字型時印出警告，
+# 但仍放行 push（exit 0）——真正的把關交給 GitHub Actions CI。
+
+ROOT="$(git rev-parse --show-toplevel 2>/dev/null || echo .)"
+if [ -f "$ROOT/scripts/check-fonts.sh" ]; then
+  if ! bash "$ROOT/scripts/check-fonts.sh" "$ROOT"; then
+    echo ""
+    echo "⚠️  偵測到疑似商業付費字型（見上）。push 仍放行，但請確認授權，避免收到授權追討信。"
+    echo "   確認是刻意保留且已緩解，可在該行加註解 font-license-ok 豁免。"
+  fi
+fi
+exit 0
