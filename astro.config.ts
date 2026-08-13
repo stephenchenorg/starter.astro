@@ -5,10 +5,24 @@ import vue from '@astrojs/vue'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 import icons from 'unplugin-icons/vite'
+import { loadEnv } from 'vite'
 
-const site = process.env.SITE_URL!
+// astro.config.ts 會在 Vite 載入 .env 之前就被求值，process.env 不會自動帶入 .env 內容
+// （見 vite-load.js 內部只用 configFile: false 的裸 Vite server 來 SSR 這個檔案，不會跑一般的 env 載入流程）
+// 因此需要自行呼叫 loadEnv 讀檔；process.env 仍優先，讓 Netlify/Vercel/PM2 等平台注入的真實環境變數可以覆蓋 .env
+// @see https://vite.dev/config/#using-environment-variables-in-config
+function resolveMode() {
+  const modeFlagIndex = process.argv.indexOf('--mode')
+  if (modeFlagIndex !== -1 && process.argv[modeFlagIndex + 1])
+    return process.argv[modeFlagIndex + 1]
+
+  return process.argv.includes('dev') ? 'development' : 'production'
+}
+
+const fileEnv = loadEnv(resolveMode(), process.cwd(), '')
+const site = process.env.SITE_URL || fileEnv.SITE_URL
 const { hostname, protocol, port } = new URL(site)
-const isNetlify = process.env.is_netlify === 'true'
+const isNetlify = (process.env.is_netlify || fileEnv.is_netlify) === 'true'
 
 export default defineConfig({
   site,
