@@ -71,6 +71,14 @@ This frontend communicates with a Laravel backend via **GraphQL API**.
 - **Auth**: JWT token 存在 Cookie Session，自動附帶 `Authorization: Bearer {token}`
 - **Headers**: 自動附帶 `Content-Language: zh_TW` + `Time-Zone: Asia/Taipei`
 
+### 內外網 API 分流（重要）
+`apiFetch()` 的 `baseURL` 會依「誰在發出請求」自動切換（用 Astro 內建的 `import.meta.env.SSR` 判斷，建置時就固定，不是執行期才決定），詳細原理見 README「API 網域設定」章節：
+
+- SSR（`.astro` frontmatter、`src/api/*.ts`）→ 優先用內網 `API_BASE_URL`，未設定則 fallback 回 `PUBLIC_API_BASE_URL`
+- 瀏覽器（Vue `client:load`/`client:idle`、`<script>` 標籤）→ 固定用 `PUBLIC_API_BASE_URL`，因為是建置時就分支好的靜態值，瀏覽器端的打包結果裡不會包含 `API_BASE_URL` 這個分支，所以就算不小心在瀏覽器端呼叫到 `apiFetch()`，也只會安全地退回外網網址，不會壞掉、也不會外洩內網位址
+
+**寫新程式碼時仍建議**：`apiFetch()` 主要設計給伺服器端用（`.astro` frontmatter 或被其呼叫的 `src/api/*.ts`）。雖然不小心在瀏覽器端呼叫不會直接壞掉，但會讓瀏覽器直接打到 Laravel 的 GraphQL API，繞過原本「伺服器代打」的設計，也可能之後補上的 session token 附加邏輯（`Authorization` header）失效。瀏覽器端需要打 API 時，優先考慮走 Astro 自己的 `src/pages/api/*` 路由（伺服器端代理），而不是直接把 `apiFetch()` 拉進 Vue 元件用。
+
 ### 新增 API 函式
 在 `src/api/{模組}.ts` 中封裝 GraphQL query/mutation：
 
