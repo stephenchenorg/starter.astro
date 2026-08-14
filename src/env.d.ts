@@ -1,7 +1,8 @@
 /// <reference path="../.astro/types.d.ts" />
 
 interface ImportMetaEnv {
-  readonly API_BASE_URL: string
+  readonly API_BASE_URL?: string
+  readonly PUBLIC_API_BASE_URL: string
   readonly GA4_TRACKING_ID: string
 }
 
